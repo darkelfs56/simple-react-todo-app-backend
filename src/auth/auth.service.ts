@@ -16,9 +16,7 @@ export class AuthService {
     username: string,
     pass: string,
   ): Promise<{ decodedAccessToken: object; response: Response }> {
-    const user = await this.usersService.findOne(username).catch((err) => {
-      throw err;
-    });
+    const user = await this.usersService.findOne(username);
 
     if (user?.hashedPassword !== sha256Hash(pass)) {
       throw new UnauthorizedException('Invalid password for user.');
