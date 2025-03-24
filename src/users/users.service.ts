@@ -35,7 +35,7 @@ export class UsersService {
     } as User;
   }
 
-  async findOne(username: string): Promise<User | undefined> {
+  async findOne(username: string): Promise<User> {
     return await this.usersRepository
       .findOne(username)
       .then((user) => {
