@@ -26,6 +26,7 @@ export class AuthService {
     const accessToken = await this.jwtService.signAsync(payload);
 
     response.cookie('accessToken', accessToken, {
+      signed: true,
       maxAge: 1000 * 60 * 5,
       httpOnly: true,
     });
